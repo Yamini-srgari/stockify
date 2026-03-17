@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0a0e1a;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Glassmorphism Card */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+}
+
+/* Glow Effect */
+.glow {
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+/* Gradient Button */
+.btn-gradient {
+  background: linear-gradient(135deg, #00d4ff, #a855f7);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-gradient:hover {
+  box-shadow: 0 0 25px rgba(0, 212, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0e1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00d4ff;
+  border-radius: 3px;
+}
+
+/* Table Styles */
+.table-glow {
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.table-glow th {
+  background: rgba(0, 212, 255, 0.1);
+  color: #00d4ff;
+  padding: 12px 16px;
+  text-align: left;
+}
+
+.table-glow td {
+  padding: 12px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.table-glow tr:hover {
+  background: rgba(0, 212, 255, 0.05);
+}
