@@ -1,6 +1,7 @@
+
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import GRU, Dense, Dropout, Input, Bidirectional
+from tensorflow.keras.layers import GRU, Dense, Dropout, Input, Bidirectional, BatchNormalization
 
 def build_model(input_shape):
     model = Sequential()
@@ -9,11 +10,13 @@ def build_model(input_shape):
     model.add(Input(shape=input_shape))
 
     # First Bidirectional GRU layer
-    model.add(Bidirectional(GRU(64, return_sequences=True)))
-    model.add(Dropout(0.2))
+    model.add(Bidirectional(GRU(128, return_sequences=True)))
+    model.add(BatchNormalization())
+    model.add(Dropout(0.3))
 
     # Second Bidirectional GRU layer
     model.add(Bidirectional(GRU(64, return_sequences=True)))
+    model.add(BatchNormalization())
     model.add(Dropout(0.2))
 
     # Third GRU layer
@@ -25,7 +28,7 @@ def build_model(input_shape):
 
     # Compile model
     model.compile(
-        optimizer='adam',
+        optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),
         loss='mean_squared_error'
     )
 

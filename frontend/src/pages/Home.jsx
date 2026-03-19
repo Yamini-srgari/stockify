@@ -191,10 +191,10 @@ const Home = () => {
               style={{ padding: '32px', cursor: 'pointer' }}
             >
               <div style={{ marginBottom: '16px' }}>{feature.icon}</div>
-              <h3 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '12px' }}>
+              <h3 style={{ fontSize: '26px', fontWeight: '600', marginBottom: '12px' }}>
                 {feature.title}
               </h3>
-              <p style={{ color: 'rgba(255,255,255,0.5)', lineHeight: '1.7', fontSize: '14px' }}>
+              <p style={{ color: 'rgba(255,255,255,0.5)', lineHeight: '1.7', fontSize: '18px' }}>
                 {feature.desc}
               </p>
             </motion.div>

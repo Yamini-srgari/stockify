@@ -93,23 +93,41 @@ const Navbar = () => {
               </Link>
             ))}
 
-            {/* CTA Button */}
-            <Link to="/predict" style={{ textDecoration: 'none' }}>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="btn-gradient"
-                style={{
-                  padding: '8px 20px',
-                  fontFamily: 'Poppins, sans-serif',
-                  fontWeight: '600',
-                  fontSize: '14px',
-                  marginLeft: '8px',
-                }}
-              >
-                🚀 Get Started
-              </motion.button>
-            </Link>
+           {/* Username */}
+<span style={{
+  color: '#00d4ff',
+  fontFamily: 'Poppins, sans-serif',
+  fontWeight: '600',
+  fontSize: '14px',
+  marginLeft: '8px',
+}}>
+  👤 {localStorage.getItem('username')}
+</span>
+
+{/* Logout Button */}
+<motion.button
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+  onClick={() => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
+    window.location.href = '/login';
+  }}
+  style={{
+    padding: '8px 20px',
+    fontFamily: 'Poppins, sans-serif',
+    fontWeight: '600',
+    fontSize: '14px',
+    marginLeft: '8px',
+    background: 'rgba(255,68,68,0.1)',
+    border: '1px solid rgba(255,68,68,0.3)',
+    borderRadius: '8px',
+    color: '#ff4444',
+    cursor: 'pointer',
+  }}
+>
+  🚪 Logout
+</motion.button>
           </div>
         </div>
       </div>

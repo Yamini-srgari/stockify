@@ -20,7 +20,7 @@ def load_data(ticker="AAPL", start="2015-01-01", end="2024-01-01"):
     # Remove missing rows
     data = data.dropna()
 
-    print("Data loaded successfully!")
+    print(f"Data loaded for {ticker}!")
     print(data.head())
 
     return data
@@ -36,7 +36,7 @@ def preprocess_data(data, window=60):
     # Create 60-day windows
     for i in range(window, len(scaled_data)):
         X.append(scaled_data[i-window:i])
-        y.append(scaled_data[i, 0])  # Predicting Close price
+        y.append(scaled_data[i, 0])
 
     X = np.array(X)
     y = np.array(y)
