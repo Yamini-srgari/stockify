@@ -27,9 +27,9 @@ with app.app_context():
     db.create_all()
 
 @app.route('/api/predict', methods=['GET'])
+@app.route('/api/predict', methods=['GET'])
 def get_predictions():
     try:
-        # Get ticker and dates from request
         ticker = request.args.get('ticker', 'AAPL')
         start = request.args.get('start', '2015-01-01')
         end = request.args.get('end', '2024-01-01')
@@ -37,12 +37,22 @@ def get_predictions():
         print(f"Predicting for {ticker} from {start} to {end}")
 
         future_days = int(request.args.get('future_days', 30))
-        predictions, y_test_actual, rmse, dates, future_prices, future_dates = predict(ticker, start, end, future_days)
+
+        predictions, y_test_actual, rmse, dates, future_prices, future_dates = predict(
+            ticker, start, end, future_days
+        )
 
         return jsonify({
             "status": "success",
             "ticker": ticker,
-            
+            "rmse": round(float(rmse), 4),
+
+            "predictions": predictions.flatten().tolist(),
+            "actual": y_test_actual.flatten().tolist(),
+            "dates": dates,
+
+            "future_prices": future_prices,
+            "future_dates": future_dates
         })
 
     except Exception as e:
